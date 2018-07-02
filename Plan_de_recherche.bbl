@@ -1,0 +1,226 @@
+\begin{thebibliography}{10}
+
+\bibitem{schillings2018}
+On the convergence of laplace’s approximation and its implications for
+  bayesian computation.
+
+\bibitem{andrieu2009pseudo}
+Christophe Andrieu, Gareth~O Roberts, et~al.
+\newblock The pseudo-marginal approach for efficient monte carlo computations.
+\newblock {\em The Annals of Statistics}, 37(2):697--725, 2009.
+
+\bibitem{asmussen2007stochastic}
+S{\o}ren Asmussen and Peter~W Glynn.
+\newblock {\em Stochastic simulation: algorithms and analysis}, volume~57.
+\newblock Springer Science \& Business Media, 2007.
+
+\bibitem{beresnev2003uncertainties}
+Igor~A Beresnev.
+\newblock Uncertainties in finite-fault slip inversions: to what extent to
+  believe?(a critical review).
+\newblock {\em Bulletin of the Seismological Society of America},
+  93(6):2445--2458, 2003.
+
+\bibitem{brooks2011handbook}
+Steve Brooks, Andrew Gelman, Galin Jones, and Xiao-Li Meng.
+\newblock {\em Handbook of markov chain monte carlo}.
+\newblock CRC press, 2011.
+
+\bibitem{bui2013computational}
+Tan Bui-Thanh, Omar Ghattas, James Martin, and Georg Stadler.
+\newblock A computational framework for infinite-dimensional bayesian inverse
+  problems part i: The linearized case, with application to global seismic
+  inversion.
+\newblock {\em SIAM Journal on Scientific Computing}, 35(6):A2494--A2523, 2013.
+
+\bibitem{burstedde2009algorithmic}
+Carsten Burstedde and Omar Ghattas.
+\newblock Algorithmic strategies for full waveform inversion: 1d experiments.
+\newblock {\em Geophysics}, 74(6):WCC37--WCC46, 2009.
+
+\bibitem{dodwell2015hierarchical}
+Tim~J Dodwell, Chris Ketelsen, Robert Scheichl, and Aretha~L Teckentrup.
+\newblock A hierarchical multilevel markov chain monte carlo algorithm with
+  applications to uncertainty quantification in subsurface flow.
+\newblock {\em SIAM/ASA Journal on Uncertainty Quantification},
+  3(1):1075--1108, 2015.
+
+\bibitem{giles2008multilevel}
+Michael~B Giles.
+\newblock Multilevel monte carlo path simulation.
+\newblock {\em Operations Research}, 56(3):607--617, 2008.
+
+\bibitem{haji2016multi}
+Abdul-Lateef Haji-Ali, Fabio Nobile, and Ra{\'u}l Tempone.
+\newblock Multi-index monte carlo: when sparsity meets sampling.
+\newblock {\em Numerische Mathematik}, 132(4):767--806, 2016.
+
+\bibitem{hayes2011rapid}
+Gavin~P Hayes.
+\newblock Rapid source characterization of the 2011 m w 9.0 off the pacific
+  coast of tohoku earthquake.
+\newblock {\em Earth, planets and space}, 63(7):4, 2011.
+
+\bibitem{hoang2013complexity}
+Viet~Ha Hoang, Christoph Schwab, and Andrew~M Stuart.
+\newblock Complexity analysis of accelerated mcmc methods for bayesian
+  inversion.
+\newblock {\em Inverse Problems}, 29(8):085010, 2013.
+
+\bibitem{hormander1985analysis}
+Lars H{\"o}rmander.
+\newblock The analysis of linear partial differential operators. iii, volume
+  274 of grundlehren der mathematischen wissenschaften [fundamental principles
+  of mathematical sciences], 1985.
+
+\bibitem{jasra2018multi}
+Ajay Jasra, Kengo Kamatani, Kody~JH Law, and Yan Zhou.
+\newblock A multi-index markov chain monte carlo method.
+\newblock {\em International Journal for Uncertainty Quantification}, 8(1),
+  2018.
+
+\bibitem{joly2003variational}
+Patrick Joly.
+\newblock Variational methods for time-dependent wave propagation problems.
+\newblock In {\em Topics in computational wave propagation}, pages 201--264.
+  Springer, 2003.
+
+\bibitem{jovanovic2013analysis}
+Bo{\v{s}}ko~S Jovanovi{\'c} and Endre S{\"u}li.
+\newblock {\em Analysis of finite difference schemes: for linear partial
+  differential equations with generalized solutions}, volume~46.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{kaipio2006statistical}
+Jari Kaipio and Erkki Somersalo.
+\newblock {\em Statistical and computational inverse problems}, volume 160.
+\newblock Springer Science \& Business Media, 2006.
+
+\bibitem{kocher2014variational}
+Uwe K{\"o}cher and Markus Bause.
+\newblock Variational space--time methods for the wave equation.
+\newblock {\em Journal of Scientific Computing}, 61(2):424--453, 2014.
+
+\bibitem{komatitsch1999introduction}
+Dimitri Komatitsch and Jeroen Tromp.
+\newblock Introduction to the spectral element method for three-dimensional
+  seismic wave propagation.
+\newblock {\em Geophysical journal international}, 139(3):806--822, 1999.
+
+\bibitem{kroese2013handbook}
+Dirk~P Kroese, Thomas Taimre, and Zdravko~I Botev.
+\newblock {\em Handbook of monte carlo methods}, volume 706.
+\newblock John Wiley \& Sons, 2013.
+
+\bibitem{latz2017multilevel}
+Jonas Latz, Iason Papaioannou, and Elisabeth Ullmann.
+\newblock Multilevel sequential$^2$ monte carlo for bayesian inverse problems.
+\newblock {\em arXiv preprint arXiv:1709.09763}, 2017.
+
+\bibitem{lions1972non}
+JL~Lions and E~Magenes.
+\newblock Non-homogeneous boundary value problems, vol. 1, 1972.
+
+\bibitem{liu2004spectral}
+Qinya Liu, Jascha Polet, Dimitri Komatitsch, and Jeroen Tromp.
+\newblock Spectral-element moment tensor inversions for earthquakes in southern
+  california.
+\newblock {\em Bulletin of the Seismological Society of America},
+  94(5):1748--1761, 2004.
+
+\bibitem{Madrigal2018ssi}
+Juan~Pablo Madrigal~Cianci, Sebastian Krumscheid, Ra\'ul Tempone, and Fabio
+  Nobile.
+\newblock Multi-level markov chain monte carlo for bayesian inversion involving
+  the elastic wave equation.
+\newblock {\em Work in progress}, 2018.
+
+\bibitem{SRCMOD}
+Martin Mai and K~Thingbaijam.
+\newblock Srcmod: An online database of finite-fault rupture models.
+
+\bibitem{marzouk2016introduction}
+Youssef Marzouk, Tarek Moselhy, Matthew Parno, and Alessio Spantini.
+\newblock An introduction to sampling via measure transport.
+\newblock {\em arXiv preprint arXiv:1602.05023}, 2016.
+
+\bibitem{minson2013bayesian}
+SE~Minson, M~Simons, and JL~Beck.
+\newblock Bayesian inversion for finite fault earthquake source models
+  i—theory and algorithm.
+\newblock {\em Geophysical Journal International}, 194(3):1701--1726, 2013.
+
+\bibitem{motamed2018multiorder}
+Mohammad Motamed and Daniel Appelo.
+\newblock A multiorder discontinuous galerkin monte carlo method for hyperbolic
+  problems with stochastic parameters.
+\newblock {\em SIAM Journal on Numerical Analysis}, 56(1):448--468, 2018.
+
+\bibitem{motamed2013stochastic}
+Mohammad Motamed, Fabio Nobile, and Ra{\'u}l Tempone.
+\newblock A stochastic collocation method for the second order wave equation
+  with a discontinuous random speed.
+\newblock {\em Numerische Mathematik}, 123(3):493--536, 2013.
+
+\bibitem{motamed2015analysis}
+Mohammad Motamed, Fabio Nobile, and Ra{\'u}l Tempone.
+\newblock Analysis and computation of the elastic wave equation with random
+  coefficients.
+\newblock {\em Computers \& Mathematics with Applications}, 70(10):2454--2473,
+  2015.
+
+\bibitem{oliveira2018error}
+Saulo~Pomponet Oliveira and Stela~Angelozi Leite.
+\newblock Error analysis of the spectral element method with
+  gauss--lobatto--legendre points for the acoustic wave equation in
+  heterogeneous media.
+\newblock {\em Applied Numerical Mathematics}, 129:39--57, 2018.
+
+\bibitem{parno2016multiscale}
+Matthew Parno, Tarek Moselhy, and Youssef Marzouk.
+\newblock A multiscale strategy for bayesian inference using transport maps.
+\newblock {\em SIAM/ASA Journal on Uncertainty Quantification},
+  4(1):1160--1190, 2016.
+
+\bibitem{parno2018transport}
+Matthew~D Parno and Youssef~M Marzouk.
+\newblock Transport map accelerated markov chain monte carlo.
+\newblock {\em SIAM/ASA Journal on Uncertainty Quantification}, 6(2):645--682,
+  2018.
+
+\bibitem{raviart1998introduction}
+Pierre-Arnaud Raviart, Jean-Marie Thomas, Philippe~G Ciarlet, and Jacques~Louis
+  Lions.
+\newblock {\em Introduction {\`a} l'analyse num{\'e}rique des {\'e}quations aux
+  d{\'e}riv{\'e}es partielles}, volume~2.
+\newblock Dunod Paris, 1998.
+
+\bibitem{robert2010introducing}
+Christian~P Robert, George Casella, and George Casella.
+\newblock {\em Introducing monte carlo methods with r}, volume~18.
+\newblock Springer, 2010.
+
+\bibitem{shao2011focal}
+Guangfu Shao, Xiangyu Li, Chen Ji, and Takahiro Maeda.
+\newblock Focal mechanism and slip history of the 2011 m w 9.1 off the pacific
+  coast of tohoku earthquake, constrained with teleseismic body and surface
+  waves.
+\newblock {\em Earth, planets and space}, 63(7):9, 2011.
+
+\bibitem{stuart2010inverse}
+Andrew~M Stuart.
+\newblock Inverse problems: a bayesian perspective.
+\newblock {\em Acta Numerica}, 19:451--559, 2010.
+
+\bibitem{tromp2005seismic}
+Jeroen Tromp, Carl Tape, and Qinya Liu.
+\newblock Seismic tomography, adjoint methods, time reversal and
+  banana-doughnut kernels.
+\newblock {\em Geophysical Journal International}, 160(1):195--216, 2005.
+
+\bibitem{wright1999numerical}
+Stephen Wright and Jorge Nocedal.
+\newblock Numerical optimization.
+\newblock {\em Springer Science}, 35(67-68):7, 1999.
+
+\end{thebibliography}

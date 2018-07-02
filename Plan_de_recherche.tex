@@ -1,0 +1,174 @@
+%Le plan de recherche est à soumettre aux membres du jury et à l'EDPY au plus tard deux semaines avant l'examen.
+%La page de couverture dûment signée par le doctorant et le directeur de thèse (et co-directeur si applicable)
+%doit être soumise à l’EDPY au plus tard le jour de l'examen.
+%The research plan shall be submitted to the jury members and EDPY at the latest two weeks before the candidacy exam.
+%The cover page duly signed by the PhD student and the thesis advisor (and co-advisor if applicable) shall be submitted 
+%to EDPY at the latest on the day of the exam.
+
+\documentclass[11pt,titlepage]{article}
+
+\usepackage[french,american]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage[tt]{titlepic}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[bottom]{footmisc}
+\usepackage{cite}
+\usepackage{pdfpages}
+\usepackage{braket}
+\usepackage{lipsum}
+\usepackage{amsmath,amsfonts}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+% 
+%\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+%% Sets page size and margins
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vvh}{\mathbf{v}_h}
+\newcommand{\uuh}{\mathbf{u}_h}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\dt}{\Delta t}
+\newcommand{\fo}{\bm{\mathcal{F}}}
+\newcommand{\Dt}{D_{\Delta t}}
+\newcommand{\VV}{\mathbf{V}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\XX}{\mathbf{X}}
+\newcommand{\lv}{\left \vert}
+\newcommand{\rv}{\right \vert}
+\newcommand{\lno}{\left \Vert}
+\newcommand{\rno}{\right \Vert}
+\newcommand{\pil}{\pi_\ell}
+\newcommand{\pim}{\pi_{\ell-1}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\TODO}[1]{\color{red}{TODO: #1}\color{black}}
+\newcommand{\comm}[1]{\color{blue}{COMMENT: #1}\color{black}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\eff}{\mathcal{F}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\te}{\bm{\theta}}
+\newcommand{\phib}{\bm{\phi}}
+\newcommand{\pot}{\Phi(\te;y)}
+\newcommand{\potl}{{\Phi_{\ell-1}(\te;y)}}
+\newcommand{\zl}{{Z_{\ell-1}}}
+\newcommand{\zm}{{Z_{\ell}}}
+\newcommand{\potm}{{\Phi_{\ell}(\te;y)}}
+\newcommand{\dhell}{d_\text{Hell}}
+\newcommand{\potp}{\Phi(\te;y')}
+\newcommand{\work}{\mathcal{W}}
+\newcommand{\QoI}{\text{QoI}}
+\newcommand{\HH}{\mathbf{H}}
+\newcommand{\sig}{\bm{\sigma}}
+\newcommand{\nel}{N_\text{el}}
+\newcommand{\ff}{\mathbf{f}}
+
+\newcommand{\del}{\nabla}
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%\usepackage{algpseudocode}
+%\usepackage[ruled,vlined]{algorithm2e}
+%\SetKwFunction{MH}{Metropolis-Hastings}% 
+%======================= Titlepage =========================================================
+%-------------------------------------------------------------------------------------------------------------------------------------------------------
+\titlepic{\includegraphics[width=17cm]{figures/edpy_header}}
+
+\title{\textbf{Research Plan}\\ \vspace*{0.5cm}\large{\textbf{Titre provisoire de la thèse / Provisional thesis title}}}
+
+\author{Candidate: Juan Pablo Madrigal Cianci\vspace*{1cm}\\Advisor: Fabio Nobile }
+\date{\today}				%activate to remove date
+%========================================================================================
+
+\newcommand{\ham}{\hat{\mathcal{H}}}
+
+\begin{document}
+%========================  Top header ======================================================
+\pagestyle{fancy} \pagenumbering{arabic} \setcounter{page}{1}
+\addtolength{\headheight}{\baselineskip}
+\newcommand{\ffont}{\fontsize{8}{8}\selectfont}
+%\lhead{\textit{DOCTORAL SCHOOL}}
+\lhead{\textit{DOCTORAL PROGRAM IN MATHEMATICS}}
+\rhead{\bfseries\ffont  \includegraphics[width=55pt]{figures/epfl_logo.pdf}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%=========================================================================================
+
+%\includepdf[pages=-]{cover.pdf} % please uncomment this to include cover.pdf
+\pagenumbering{gobble}
+\maketitle  % please uncomment this to compile the title page
+\newpage
+\tableofcontents
+\newpage
+\hspace*{0.3cm}
+\section{Introduction, Setup, and  Objectives}
+\pagenumbering{arabic}
+\input{1Introduction}
+\newpage
+\hspace*{0.3cm}
+\color{red}  ALMOST FINAL DRAFT; DON'T KNOW IF I SHOULD INCLUDE A BRIEF DESCRIPTION OF MCMC \color{black}
+\section{State of the Art}\label{sec::obj}
+\input{2Objectives}
+\newpage
+
+\hspace*{0.3cm}
+\color{red}  WAITING FOR SOME RESULTS FROM THE CLUSTER, WILL UPDATE SOON  \color{black}
+\section{State of Our Research and First Results}
+\input{3FirstResults}
+
+\newpage
+\hspace*{0.3cm}
+\color{red} HALF-WAY DONE (wanted to try to include some experiments with the transport maps), but I wonder if I should move sections 3.4.2 to 3.4.5 here?  \color{black}
+\section{Future planning}
+\input{4FuturePlan}
+\newpage
+\color{red}  This is probably done  \color{black}
+\hspace*{0.3cm}
+\section{Miscellaneous}
+\input{5Misc}
+
+
+\hspace*{0.3cm}
+
+\newpage
+\nocite{*}
+\bibliography{bib}
+\bibliographystyle{plain}
+\newpage
+
+
+
+\end{document}  

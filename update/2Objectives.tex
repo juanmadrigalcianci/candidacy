@@ -1,0 +1,30 @@
+% 2.	Objectifs / Objectives: ½ page
+
+\hspace*{0.3cm}
+
+We now discuss the current state of the art of the research at hand. There are wo main points to address in this respect, the first one addresses the current state of seismic source inversion, and the second one addresses the state of  multi-level and multi-index Markov chain Monte Carlo methods. We begin by discussing the state of seismic inversion.
+
+ 
+ \subsection{Deterministic Inversion}
+ Traditionally, seismic inversion has been done using a deterministic approach; in the sense that a misfit function, measuring the differences in displacement or arrival time, is defined and then a parameter that minimizes this misfit is obtain using standard minimization algorithms, such as BFGS or conjugate gradient. This has been an approach used in numerous case studies, such as those presented in 
+ \cite{epanomeritakis2008newton,krebs2009fast,hormander1985analysis} given the inherent computational
+ \subsection{Probabilistic Inversion}
+ One of the main drawbacks of the deterministic approach is 
+
+ \subsection{Multilevel and Multiindex Monte Carlo}
+\subsection{Mutilevel and Multiindex Markov Chain Monte Carlo}
+Only few works so far have dealt with Multi-Level extensions of MCMC algorithms for posterior
+exploration in Bayesian inversion [36, 37]. They both address the case of parameter identification for
+elliptic PDEs and propose different strategies to build Multi-Level Metropolis-Hastings algorithms. We
+will investigate improved versions of these MLMCMC algorithms and study their convergence proper-
+ties in the context of parameter and/or source identification for second order hyperbolic problems (wave
+equations), which are the underlying models in seismic applications. Moreover, the ideas in [36, 83,
+84, 86, 87] on the construction of proposals for Metropolis-Hastings schemes, which are well defined
+on function spaces, will be extended here to the case of spatially or temporally distributed parameters /
+sources in the context of MLMCMC.
+Finally, we will extend the Multi-Index framework described above in Section 1.3.1 to the MCMC
+context. This sub-task concerns developing the MIMCMC algorithm and performing convergence ana-
+lysis, as well as illustrating the results on problems of hyperbolic type. This task is specially challenging
+given the limited regularity available in the hyperbolic problem. We note in passing that this task is
+strongly related to the task T3.1 and indeed the expertise gained in one of the two tasks will be immedi-
+ately applied in the other task.

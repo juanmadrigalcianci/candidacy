@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Plan_de_recherche.aux
+The style file: plain.bst
+Database file #1: bib.bib
+I was expecting a `,' or a `}'---line 182 of file bib.bib
+ : 
+ : author={Schillings C, Sprungk B and Wacker P }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 255 of file bib.bib
+ :    
+ :    journal{Seismological Research Letters}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Name 1 in "Mai, Martin, and K Thingbaijam" has a comma at the end for entry SRCMOD
+while executing---line 1049 of file plain.bst
+Name 2 in "Madrigal Cianci,Juan Pablo and Krumscheid, Sebastian, and Tempone, Ra\'ul and Nobile, Fabio" has a comma at the end for entry Madrigal2018ssi
+while executing---line 1049 of file plain.bst
+Warning--to sort, need author or key in schillings2018
+Warning--empty author in schillings2018
+Warning--empty journal in schillings2018
+Warning--empty year in schillings2018
+Name 2 in "Madrigal Cianci,Juan Pablo and Krumscheid, Sebastian, and Tempone, Ra\'ul and Nobile, Fabio" has a comma at the end for entry Madrigal2018ssi
+while executing---line 1090 of file plain.bst
+Name 1 in "Mai, Martin, and K Thingbaijam" has a comma at the end for entry SRCMOD
+while executing---line 1090 of file plain.bst
+Warning--empty journal in SRCMOD
+Warning--empty year in SRCMOD
+You've used 39 entries,
+            2118 wiz_defined-function locations,
+            722 strings with 10770 characters,
+and the built_in function-call counts, 12426 in all, are:
+= -- 1206
+> -- 604
+< -- 7
++ -- 246
+- -- 198
+* -- 928
+:= -- 2106
+add.period$ -- 113
+call.type$ -- 39
+change.case$ -- 208
+chr.to.int$ -- 0
+cite$ -- 45
+duplicate$ -- 435
+empty$ -- 962
+format.name$ -- 198
+if$ -- 2522
+int.to.chr$ -- 0
+int.to.str$ -- 39
+missing$ -- 44
+newline$ -- 193
+num.names$ -- 76
+pop$ -- 211
+preamble$ -- 1
+purify$ -- 176
+quote$ -- 0
+skip$ -- 296
+stack$ -- 0
+substring$ -- 792
+swap$ -- 52
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 142
+warning$ -- 6
+while$ -- 121
+width$ -- 41
+write$ -- 412
+(There were 6 error messages)

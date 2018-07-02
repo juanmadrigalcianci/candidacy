@@ -1,0 +1,92 @@
+% 3.	Premiers résultats / First results: 1-2 pages
+We have focused mainly on three topics that tackle the problem at hand, both theoretically and computationally. To be more precise, so far we have studied and proved the well possedness of the BIP for the model at hand, implemented different MCMC sampling strategies for a seismic source inversion case study, and proposed and investigated a new MLMCMC strategy. We will devote this section to explain the results obtained on all three directions. Unless otherwise specified, we will be using SPECFEM to simulate the seismic wave phenomena.
+\subsection{On the Well-Possedness of the BIP}
+
+
+\subsection{Solving the Inverse Problem: The Tanzania Case Study}
+On a joint effort with KAUST, 
+
+
+\subsection{MLMCMC strategy}
+
+
+
+
+
+
+\hspace*{0.3cm}
+Only few works so far have dealt with Multi-level extensions of MCMC algorithms for posterior exploration in Bayesian inversion (\cite{hoang2013complexity} \cite{dodwell2015hierarchical}). Both authors address the case of parameter identification for elliptic PDEs and propose different strategies in order to build Multi-Level Metropolis-Hastings algorithms. 
+We split this section into two parts. On the first part we discuss some of the proposed Multi-Level Markov Chain Monte Carlo (ML-MCMC) algorithms, the (existing) theory behind them, and some results for the so-called \textit{toy problems}. The second part is the application of both MCMC and MLMCMC methods to the seismic source inversion problems at hand.
+
+
+%During period III.1 of this project, from  July 2017 to December 2017 ,
+%our main effort has been put on Objective T.4.1 of the
+%grant OSR-2015-CRG4-2585-01: ``Adaptive MLMCMC [Multi-level Markov chain Monte Carlo] development with analysis and numerical simulations.'' 
+
+The work done during this period largely builds on the work proposed by \cite{dodwell2015hierarchical}. However, the proposed experimental algorithm addresses one of the main faults in the algorithm proposed in \cite{dodwell2015hierarchical}, thus making it more suitable for a wider array of problems. Additionally, preliminary test of this experimental  MLMCMC method are done in the context of a simplified seismic source inversion problem, for which satisfactory results were obtained.
+
+For many mathematical models arising in the sciences and engineering, it is impossible to fully determine the parameters that are used as input for the model, which will in turn increase the uncertainty in the model. A method used in order to quantify this uncertainty is based on Bayes theorem. Consider the problem of finding a set of input parameters $\theta \in \mathbb{R}^d$ from a set of observations $y\in\mathbb{R}^m$, where $\theta$ and $y$ are related via \begin{equation}
+\mathcal{G}(\theta)+\eta=y,
+\end{equation}
+where we  denote the mathematical model by $\mathcal{G}$, and we furthermore assume that there exist some noise $\eta$ in the observations.  The goal of the inverse problem is then to determine $\theta$. Using a probabilistic framework, we can see this as the problem of finding  the probability distribution $\pi(\theta|y)$ ($\theta$ given $y)$, which we will call posterior distribution. Using Bayes theorem we get that this is equivalent to \begin{equation}
+\pi(\theta|y) =\frac{\pi(y|\theta)\pi(\theta)}{\pi(y)},\label{bi}
+\end{equation}
+
+
+
+where we call $\pi(\theta)$ the prior distribution and $\pi(y|\theta)$ the likelihood distribution. Thus, in order to obtain samples from the unknown posterior distribution, we could alternatively, sample from the right-hand side of Eq. \ref{bi}. In most situations, however, the posterior distribution is intractable in the sense that exact sampling from it is impossible. One way to circumvent this problem, is to generate samples using a Metropolis–
+Hastings–type Markov chain Monte Carlo (MCMC) approach, which is based on two main steps; (i) given a sample $X_k$, generate $\tilde{x}$ based on some proposal generating function, and (ii) perform an acceptance-rejection step, setting $X_{k+1}=\tilde{x}$ with some probability $\alpha$, otherwise the previous sample is used again, leading to a Markov chain.  Perhaps the biggest drawback of MCMC is its cost for large–scale applications, since these type of methods require a large number of iterations. In seismology for example,  a computationally intensive mathematical model (usually the elastic wave equation), needs to be solved numerically on a fine spatial grid $N$ times. MCMC methods are iterative in nature, requiring a large number of iterations in order to obtain meaningful results, which further worsens the computational intensity of this problem. A way of mitigating this computational burden, is the use of a multi-level approach to  MCMC, which is similar to that of multi-level Monte Carlo \cite{giles2015multilevel} The idea is then to define an increasing sequence of levels $\{l\}_{l=0}^L$ for which the mathematical model will have a discretization parameter $h_l$ such that $h_0>h_1>\dots h_L$ ( i.e, the numerical grid becomes finer as the level increases). We can then use the information obtained at level $l-1$, in order to generate the samples at level $l$. On each level we obtain $N_l$ samples, such that $N_0>N_1>\dots> N_L$, hence obtaining the majority of the information at the coarsest discretization (where the mathematical model is much cheaper to compute), and then we proceed to ``correct'' this information at the subsequent levels. As mentioned before, few works have been done before on this area. That of \cite{hoang2013complexity}, which is based on an importance sampling scheme, and that of \cite{dodwell2015hierarchical}, which uses a Markov chain Monte Carlo approach. We develop our MLMCMC method based on the latter one, however, we believe that our algorithm has features that make it more 
+robust.
+
+ \subsection{MLMCMC with Sequential Resampling}
+The algorithm consist on the following. At the coarsest level $l_0$, we obtain a chain of samples $\chi_0$ of our parameter of interest $\theta$ using a Metropolis-Hastings algorithm with some kernel $K_0(\cdot,\cdot)$. Having done this, we can compute the posterior mean  of a quantity of interest at the coarsest level $Q_0$. Then, for each level $l$ we generate via Metropolis-Hastings two chains $\chi_{l,l-1}$,$\chi_{l,l}$ of size $N_l$, such that the proposal generating function $g_{l,l-1}(\cdot)$ depends on the chain at the previous level, $\chi_{l-1,l-1}$. Each proposal is accepted or rejected using a Metropolis-Hastings step (Algorithm \ref{MH}), with a level-dependent posterior distribution. Using this, we can therefore compute for each sample at level $l$ the following difference$$\hat{Y}_l=N_l^{-1}\sum_{n=1}^{N_l}y_l^n,\ \ y^n_l=Q( \mathcal{G}(\theta_{l,l}^{n+1}))-Q(\mathcal{G}(\theta^{n+1}_{l,l-1})),$$
+% Using the typical Bayesian framework, we would like to do a multi-level estimation of the posterior distribution of our parameter of interest $\theta$ based on a set of observations $\mathcal{G}(\theta_d)$, where $\mathcal{G}(\cdot)$ denotes an observation operator. In order to do so, we propose the following Algorithm \ref{new-ml-mcmc}.
+% Some clarifications are necessary in order to fully understand the algorithm. Denote by $N_l$ and $K_l(\cdot,\cdot)$ the number of iterations and the Markov-Kernel at level $l$. 
+where $Q$ denotes a quantity of interest. Thus, following \cite{giles2015multilevel} we can obtain a multi-level estimator $Q^{ML}$ by 	$$\hat{Q}^{ML}=\hat{Q}_0+\sum_{l=1}^L\hat{Y}_l.$$	
+The algorithm is given in Algorithm \ref{mlmcmc}.
+%  We note $K_{l,l-1}$ is chosen such that the invariant measure $\pi_{l,l-1}^\text{post}$ has marginals $\pi_{l-1}^\text{post},\ \ \pi_{l}^\text{post}$, that is, we can use a separate Metropolis-Hastings on $\hat{\theta}^{n+1}_{l,l-1},\hat{\theta}^{n+1}_{l,l}$. 
+
+\begin{algorithm}
+	Given $N_0$, $\theta_0^1$,  $K_0$, obtain chain $\chi_0=\{\theta_0^1\dots\theta_o^{N_0}\}$: \\
+	\For{$n=1\dots N_0$}{
+		$$\theta_0^{n+1}\sim K_0(\theta_0^n,\cdot),\ \ \text{Including acceptance-rejection step.}$$
+	}
+	Compute $$\hat{Q}_0=N_0^{-1}\sum_{n=1}^{N_0}Q(\mathcal{G}(\theta^n_0)),\ \ $$
+	\For{$l=1\dots L$}{
+		Given $N_l$, $\theta_l^1$, and $K_{l,l-1}$,
+		\For {$n=1\dots N_l$}{
+			$$\hat{\theta}^{n+1}\sim\mu, \text{ where }\mu=\text{KDE}(\chi_{l-1})\text{ or }\mu=\frac{1}{N_{l-1}}\sum_j\delta_{\theta^j_{l-1}}\text{ for example.}$$
+			Compute proposal $$\left(\tilde{\theta}^{n+1}_{l,l-1},\tilde{\theta}^{n+1}_{l,l}|\hat{\theta}^{n+1}\right)\sim g_{l,l-1}(\cdot)$$
+			Do two Metropolis-Hastings  steps:
+			\begin{align}
+			\theta^{n+1}_{l,l-1}&=\text{MH}\left(\tilde{\theta}^{n}_{l,l-1},\theta^{n}_{l,l-1};\pi_{l-1}^\text{Post},g_{l-1,l}	\right)\\
+			\theta^{n+1}_{l,l}&=\text{MH}\left(\tilde{\theta}^{n}_{l,l},\theta^{n}_{l,l};\pi_l^\text{Post},g_{l-1,l}	\right)
+			\end{align}
+			Compute $$y^n_l=Q( \mathcal{G}(\theta_{l,l}^{n+1}))-Q(\mathcal{G}(\theta^{n+1}_{l,l-1}))$$
+		}
+		Construct \begin{equation}\xi_l=\left\{
+		\begin{pmatrix}
+		\theta^1_{l,l-1}\\
+		\theta^1_{l,l}
+		\end{pmatrix},\dots,\begin{pmatrix}
+		\theta^{N_l}_{l,l-1}\\
+		\theta^{N_l}_{l,l}
+		\end{pmatrix}\right\},
+		\end{equation} 
+		Set 
+		\begin{equation}
+		\chi_l=\xi_l[2,:].
+		\end{equation}	
+		Compute $$\hat{Y}_l=N_l^{-1}\sum_{n=1}^{N_l}y_l^n$$
+	}
+	Compute multi-level estimator, 
+	$$\hat{Q}^{ML}=\hat{Q}_0+\sum_{l=1}^L\hat{Y}_l$$	
+	\caption{New ML-MCMC\label{mlmcmc}}
+\end{algorithm}
+We remark that given $\chi_{l-1}$, there are different ways on which $g_{l,l-1}(\cdot)$ can be chosen, in particular, $g$ can be of the form: \begin{align}
+g^c_{l,l-1}(\cdot|\chi_{l-1})&=\int K_{l-1,l}\left((\hat{\theta},\theta,\cdot)\right)d\mu(\theta)\ \ \text{(Conditional)}\label{cond}\\
+g^{\text{un}}_{l,l-1}(\cdot)&=\mathbb{E}_{\chi_{l-1}}\left[g_{l,l-1}(\cdot|\chi_{l-1})	\right]\text{  (unconditional)},\\
+g^\text{post}_{l,l-1}(\cdot)&=\int K_{l,l-1}\left((\theta,\theta),\cdot\right)d\pi^\text{post}_{l-1}(\theta),
+\end{align} 
+for some Markov Kernel $K$. Note that this $g$ can be constructed, for example, in such a way that we sample from  the points obtained at the previous level, in which case the algorithm is the same as the one presented  in \cite{dodwell2015hierarchical}. However, this presents the inconvenient of restricting the exploration of the true posterior to only previously sampled values, which is not ideal if the true posterior distribution is too different from the posterior distribution at the coarsest level.
+

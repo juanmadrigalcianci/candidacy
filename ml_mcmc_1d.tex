@@ -1,0 +1,202 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{subfig}
+%\usepackage{algpseudocode}
+\usepackage[ruled,vlined]{algorithm2e}
+\SetKwFunction{MH}{Metropolis-Hastings}%
+\usepackage{listings}
+\usepackage{subfig}
+\title{\textbf{ML-MCMC: Toy Problems}} 
+\author{Juan Pablo Madrigal Cianci}
+\begin{document}
+\maketitle
+\section{ML with Sequential Resampling}
+
+\section{Level Tempering}
+\section{Law and Jasra's Algorithm}
+This is a write-up  on the Implementation of the ML-MCMC algorithm of Jasra and Law, as well as some modifications to it. in general,  for each pair of chains $\chi_l,$ $\chi_{l-1}$, we generate proposals of either one these forms:
+\subsection{Method 1:} 
+	\begin{align}
+x_l^*&=x^n_l+u_1,\\
+x^*_{l-1}&= x^n_{l-1}+u_1,
+	\end{align}
+	for $u_1\sim N(0,\Sigma)$, where $\Sigma$ is a properly chosen covariance matrix, and $n$ denotes the $n^{th}$ iteration of the MCMC sampler. This is the original method proposed on the paper.
+\subsection{Method 2:} (Madrigal). As a \textit{trick} to keep the chains more correlated between levels, we let 
+	\begin{align}
+x_l^*&=x^n_l+u_1,\\
+x^*_{l-1}&= x^*_{l}.
+\end{align}
+
+This trick is chosen on a very \textit{ad-hoc} way, however, the intuition is that it will provide a stronger correlation for the chains. This is also confirmed experimentally.\\
+\\
+We now run some experiments for different toy problems which, even though simple, are useful to corroborate the validity of the method.
+\section{Scalar Gaussian}
+We begin with a simple, yet illustrative case. For each level $l$, we construct two chains $\chi_l,\chi_{l-1}$ targeting $\pi_l(x), \pi(x)_{l-1},$ with $\pi_l= N(2^{-l},1+2^{-l})$. 
+We are interested in studying the behaviour of  chains for large number of samples $N_l$. In particular, we would like to see that the method is independent of the initial value. To study this, we set $x^0_l\neq x^0_{l-1}$ for $l=1,\dots,L,$  and run the MLMCMC sampler on each level for $N_l=10^5, l=1,\dots,4,$ iterations, with a burn-in of $50.000$ samples.  We obtain the results shown in Figure \ref{fig:kodystandardu1isn001} for Method 1 and Figure \ref{fig:kodymytricku1isn01} for Method  2. It seems that Method 2 is able to keep a stronger correlation between samples, as suggested. Note that as we increase $l$, the correlation coefficient increases between two contiguous levels, as we expected. 	\color{red} To Do: Experiment with appropriate $N_l$.
+\color{black}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/Kody_standard_u1_is_n(00_1)}
+		\includegraphics[width=1\linewidth]{figs/Kody_standard_u1_is_n(01)}
+			\includegraphics[width=1\linewidth]{figs/Kody_standard_u1_is_n(02)}
+				\includegraphics[width=1\linewidth]{figs/Kody_standard_u1_is_n(010)}
+	\caption{Results for 50.000 samples (after burn-in of 50.000 more) when samples are generated with Method 1. Results shown for $\Sigma=0.1,1,2,10,$ in decreasing order of rows. From left to right: Leftmost: Estimated densities for each level. The other 4 figures are the correlation between samples at two consecutive levels, i.e correlation between $\chi_l,\chi_{l-1}$, $l=1,\dots,4$. The correlation coefficient is shown as the title of each subplot. }
+	\label{fig:kodystandardu1isn001}
+\end{figure}
+
+
+
+
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/Kody_my_trick_u1_is_n(001)}
+	\includegraphics[width=1\linewidth]{figs/Kody_my_trick_u1_is_n(01)}
+	\includegraphics[width=1\linewidth]{figs/Kody_my_trick_u1_is_n(02)}
+		\includegraphics[width=1\linewidth]{figs/Kody_my_trick_u1_is_n(010)}
+	\caption{Results for 50.000 samples (after burn-in of 50.000 more) when samples are generated with Method 2. Results shown for $\Sigma=0.1,1,2,10$ in decreasing order of rows. From left to right: Leftmost: Estimated densities for each level. The other 4 figures are the correlation between samples at two consecutive levels, i.e correlation between $\chi_l,\chi_{l-1}$, $l=1,\dots,4$. The correlation coefficient is shown as the title of each subplot. }
+
+	\label{fig:kodymytricku1isn01}
+\end{figure}
+\color{red}\section{Update to include information requested}
+\color{red} \subsection{Update Method 1}
+We run the method for 18 levels, with $\Sigma =5, N_l=10^5,l=1,\dots,L$, and a burn in of 50k and obtain the results shown in the figures below. We define the \textit{divergence} as the amount of times that $\chi_l$ accepts and $\chi_{l-1}$ rejects, or vice-versa. Method 1 seems to introduce variance and divergence that are $O(1)$. There seems to be a small bias on the ml-estimator.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/var_kod}
+	\caption{O(1)?}
+	\label{fig:varkod}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ar_kody}
+	\caption{}
+	\label{fig:arkody}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/traces}
+	\caption{}
+	\label{fig:traces}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/div}
+	\caption{}
+	\label{fig:div}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ml_mean}
+	\caption{}
+	\label{fig:mlmean}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ess_level}
+	\caption{}
+	\label{fig:esslevel}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figs/acf_kody}
+	\caption{}
+	\label{fig:acfkody}
+\end{figure}
+
+
+
+\color{red}
+\color{red} \subsection{Update Method 2}
+We run the same experiment as above for Method 2. Here the variance nor the divergence are O(1). results below.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/var_juan}
+	\caption{}
+	\label{fig:varjuan}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ess_juan}
+	\caption{}
+	\label{fig:essjuan}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ess_level_juan}
+	\caption{}
+	\label{fig:essleveljuan}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ml_mean_juan}
+	\caption{}
+	\label{fig:mlmeanjuan}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/div_juan}
+	\caption{}
+	\label{fig:divjuan}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/tp_juan}
+	\caption{}
+	\label{fig:tpjuan}
+\end{figure}
+
+
+\color{black} 
+\section{1D Subsurface Flow.}
+We now study a test-case involving the following  one-dimensional elliptic equation \begin{align}
+\begin{cases}
+&-(\alpha(x,\xi)u(x)')'=1, \ \forall \ x\in(0,1)\\
+&u(0)=u(1)=0.
+\end{cases}
+\end{align}
+where \begin{align}\label{KL}
+\log(\alpha(x,\xi))=\sum^\infty_{i=1}\frac{\cos(\pi x i)}{i^2}\xi_i, \ \ \xi_i\sim N(0,1).
+\end{align}
+Suppose that we can measure noisy data $d$ at $x=0.25,x=0.5,$ and $x=0.75$. Based on these measurements we would like to infer properties of a quantity of interest $Q$. Suppose that our quantity of interest (QoI) is $\xi_1$. Data is generated at a much finer grid (to avoid the inverse crime). The equation is solved using a piecewise linear finite difference approximation and by truncating (\ref{KL}) at $P=10$. We consider a hierarchy of discretization parameters $h_l$ with $h_l=2^{-l}$, $l=0,\dots,11.$
+\section{Wave Equation 1D.}
+Should have by tomorrow or so.
+\section{Rejection-Free: ZZ Method.}
+Same as above.
+ \bibliography{bib}
+ \bibliographystyle{plain}
+ \newpage
+ 
+
+
+
+
+ 	
+ 	
+
+\end{document}
